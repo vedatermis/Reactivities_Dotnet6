@@ -4,7 +4,6 @@ import Activity from "../../../app/models/activity";
 import ActivityDetails from "../details/ActivityDetails";
 import ActivityForm from "../form/ActivityForm";
 import ActivityList from "./ActivityList";
-import activity from "../../../app/models/activity";
 
 interface Props {
   activities: Activity[];
@@ -25,10 +24,12 @@ export default function ActivityDashboard({ activities, selectedActivity, select
         <ActivityList activities={activities} selectActivity={selectActivity} deleteActivity={deleteActivity}/>
       </Grid.Column>
       <Grid.Column width={6}>
-        {selectedActivity && !editMode && <ActivityDetails activity={selectedActivity}
+        {
+            selectedActivity && !editMode && <ActivityDetails activity={selectedActivity}
                                               cancelSelectActivity={cancelSelectActivity}
                                               openForm={openForm}
-        />}
+        />
+        }
           {editMode &&
         <ActivityForm closeForm={closeForm} activity={selectedActivity} createOrEdit={createOrEdit}/>}
       </Grid.Column>
